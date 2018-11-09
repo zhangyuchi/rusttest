@@ -1,0 +1,2 @@
+# rusttest
+rust code example
