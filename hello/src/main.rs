@@ -2,7 +2,10 @@
 
 //feature需要加到main.rs或者lib.rs
 mod thread;
+mod smart;
 
 fn main() {
     thread::lock_run();
+
+    smart::refcell();
 }
