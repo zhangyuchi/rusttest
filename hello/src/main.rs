@@ -4,5 +4,5 @@
 mod thread;
 
 fn main() {
-    thread::run();
+    thread::lock_run();
 }
