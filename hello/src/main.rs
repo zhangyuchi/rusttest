@@ -2,6 +2,7 @@
 
 //feature需要加到main.rs或者lib.rs
 mod smart;
+mod structtest;
 mod template;
 mod thread;
 mod traittest;
@@ -13,4 +14,6 @@ fn main() {
     template::largest_run();
 
     traittest::print_person();
+
+    structtest::print_info();
 }
