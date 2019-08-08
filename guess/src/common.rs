@@ -1,13 +1,22 @@
 //use std::collections::hash_map::Entry::Occupied;
+fn string_slice(arg: &str) -> &str {
+    println!("{}", arg);
+    arg
+}
+
+fn string(arg: String) -> String{
+    println!("{}", arg);
+    arg
+}
 
 pub fn hello() -> Result<(), String> {
     let mut s = String::from("hello");
 
-    let mut r3 = &s; // BIG PROBLEM
-    let r1 = &s; // no problem
-    let r2 = &s; // no problem
+    let r1 = &mut s; // BIG PROBLEM
+    let r2 = string_slice("tiny".into()); // no problem
+    r1.push_str(" world");
 
-    println!("{}, {}, and {}", r1, r2, r3.append);
+    println!("{} and {}", r1, r2);
     //Err("Cannot hello".into());
     return Ok(());
 }
