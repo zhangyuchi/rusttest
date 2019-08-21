@@ -1,19 +1,40 @@
 #![feature(generators, generator_trait)]
 
 //feature需要加到main.rs或者lib.rs
+mod generate;
+mod itertest;
 mod smart;
 mod structtest;
 mod template;
 mod thread;
 mod traittest;
 
+use clap::{App, Arg};
+
 fn main() {
-    thread::lock_run();
-    smart::refcell();
+    let matches = App::new("rusttest")
+        .version("0.1.0")
+        .author("zhangjun")
+        .about("Learn use Rust")
+        .arg(
+            Arg::with_name("verbose")
+                .short("v")
+                .multiple(true)
+                .help("verbosity level"),
+        )
+        .args_from_usage("-t --type=[Test Type] 'test type'")
+        .get_matches();
 
-    template::largest_run();
+    let addr_str = matches.value_of("type").expect("need type arg");
 
-    traittest::print_person();
-
-    structtest::print_info();
+    match addr_str {
+        "thread" => thread::run_test(),
+        "smart" => smart::refcell(),
+        "template" => template::largest_run(),
+        "trait" => traittest::print_person(),
+        "struct" => structtest::print_info(),
+        "iter" => itertest::run_test(),
+        "gen" => generate::generate(),
+        _ => (),
+    }
 }

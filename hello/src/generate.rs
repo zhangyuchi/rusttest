@@ -1,12 +1,12 @@
 use std::ops::{Generator, GeneratorState};
+use std::pin::Pin;
 
-pub fn generate(){
+pub fn generate() {
     let mut generator = || {
-        let mut curr: u64 = 1;
-        let mut next: u64 = 1;
+        let mut curr: u32 = 1;
+        let mut next: u32 = 1;
         loop {
             let new_next = curr.checked_add(next);
-
             if let Some(new_next) = new_next {
                 curr = next;
                 next = new_next;
@@ -18,11 +18,11 @@ pub fn generate(){
     };
 
     loop {
-        unsafe {
-            match generator.resume() {
-                GeneratorState::Yielded(v) => println!("{}", v),
-                GeneratorState::Complete(_) => return,
-            }
+        //unsafe {
+        match Pin::new(&mut generator).resume() {
+            GeneratorState::Yielded(v) => println!("{}", v),
+            GeneratorState::Complete(_) => return,
         }
+        //}
     }
 }

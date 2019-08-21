@@ -9,6 +9,8 @@ use std::rc::Rc;
 use std::cell::RefCell;
 
 pub fn refcell() {
+    println!("smart refcell");
+
     let value = Rc::new(RefCell::new(5));
 
     let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));

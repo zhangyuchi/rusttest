@@ -26,6 +26,8 @@ impl fmt::Display for Cat {
 }
 
 pub fn print_info() {
+    println!("structtest print_info");
+
     let cat = Cat(Animal {
         eye: true,
         ear: true,

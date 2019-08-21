@@ -1,6 +1,6 @@
 trait Person {
     fn run(&self) {
-        print!("run\n");
+        print!("Person run\n");
     }
 
     fn name(&self) -> String;
@@ -19,12 +19,18 @@ struct Worker {
 }
 
 impl Person for Worker {
+    fn run(&self) {
+        print!("Worker run\n");
+    }
+
     fn name(&self) -> String {
         self.username.clone()
     }
 }
 
 pub fn print_person() {
+    println!("traittest print_person");
+
     let zj = Worker {
         username: String::from("zj"),
     };

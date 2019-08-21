@@ -1,10 +1,10 @@
-use std::thread;
 use std::sync::mpsc;
+use std::thread;
 use std::time::Duration;
 //use std::rc::Rc;
-use std::sync::{Mutex, Arc};
+use std::sync::{Arc, Mutex};
 
-pub fn run() {
+fn run() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(move || {
@@ -14,12 +14,13 @@ pub fn run() {
     handle.join().unwrap();
 }
 
-pub fn channel(){
+fn channel() {
+    println!("thread channel");
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
         let val = String::from("hi");
-        tx.send(val).unwrap();//val所有权转移
+        tx.send(val).unwrap(); //val所有权转移
     });
 
     let received = rx.recv().unwrap();
@@ -27,6 +28,7 @@ pub fn channel(){
 }
 
 pub fn vec_channel() {
+    println!("thread vec_channel");
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
@@ -50,7 +52,8 @@ pub fn vec_channel() {
     }
 }
 
-pub fn lock_run() {
+fn lock_run() {
+    println!("thread lock_run");
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
 
@@ -68,4 +71,12 @@ pub fn lock_run() {
     }
 
     println!("Result: {}", *counter.lock().unwrap());
+}
+
+pub fn run_test() {
+    run();
+    channel();
+    vec_channel();
+    lock_run();
+    ()
 }

@@ -12,6 +12,8 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
 }
 
 pub fn largest_run() {
+    println!("template largest_run");
+
     let number_list = vec![14000, 50, 25, 100, 65];
 
     let result = largest(&number_list); //隐含指定模板参数

@@ -1,0 +1,14 @@
+[workspace]
+
+members = [
+    "hello",
+    "guess",
+    "tcp_server",
+]
+
+[profile.release]
+debug = true
+
+[profile.bench]
+debug = true
+
