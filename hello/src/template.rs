@@ -24,3 +24,40 @@ pub fn largest_run() {
     let result = largest::<char>(&char_list); //严格指定模板参数
     println!("The largest char is {}", result);
 }
+
+trait Stream {
+    fn get_info(&self) -> String;
+}
+
+struct Console;
+struct FileStream;
+
+impl Console {
+    fn gettype(&self) -> String {
+        return String::from("console");
+    }
+}
+
+impl FileStream {
+    fn gettype(&self) -> String {
+        return String::from("filesystem");
+    }
+}
+
+impl Stream for Console {
+    fn get_info(&self) -> String {
+        return String::from("info:") + self.gettype().as_str();
+    }
+}
+
+//动多态，运行时派发
+fn dynamic_dispatch(stream: &mut dyn Stream) {
+    println!("dynamic_dispatch: {}", stream.get_info())
+    // do something
+}
+
+//静多态，编译器派发
+fn static_dispatch<T: Stream>(stream: &mut T) {
+    println!("static_dispatch: {}", stream.get_info())
+    // do something
+}
