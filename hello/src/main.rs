@@ -1,6 +1,8 @@
 #![feature(generators, generator_trait)]
+#![feature(async_await)]
 
 //feature需要加到main.rs或者lib.rs
+mod asynctest;
 mod generate;
 mod itertest;
 mod smart;
@@ -35,6 +37,7 @@ fn main() {
         "struct" => structtest::print_info(),
         "iter" => itertest::run_test(),
         "gen" => generate::generate(),
+        "async" => asynctest::run_test(),
         _ => (),
     }
 }

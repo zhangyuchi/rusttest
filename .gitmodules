@@ -1,0 +1,3 @@
+[submodule "async/clobber"]
+		path = async/clobber
+		url = https://github.com/ragona/clobber.git
