@@ -4,6 +4,7 @@ members = [
     "hello",
     "guess",
     "tcp_server",
+	"async/clobber",
 ]
 
 [profile.release]

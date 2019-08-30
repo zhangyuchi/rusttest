@@ -4,11 +4,11 @@ enum List {
     Nil,
 }
 
-use List::{Cons, Nil};
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
+use List::{Cons, Nil};
 
-pub fn refcell() {
+pub fn list_cons() {
     println!("smart refcell");
 
     let value = Rc::new(RefCell::new(5));

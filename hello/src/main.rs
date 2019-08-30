@@ -31,7 +31,7 @@ fn main() {
 
     match addr_str {
         "thread" => thread::run_test(),
-        "smart" => smart::refcell(),
+        "smart" => smart::run_test(),
         "template" => template::largest_run(),
         "trait" => traittest::print_person(),
         "struct" => structtest::print_info(),
