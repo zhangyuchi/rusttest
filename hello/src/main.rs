@@ -3,6 +3,7 @@
 
 //feature需要加到main.rs或者lib.rs
 mod asynctest;
+mod fntest;
 mod generate;
 mod itertest;
 mod smart;
@@ -38,6 +39,7 @@ fn main() {
         "iter" => itertest::run_test(),
         "gen" => generate::generate(),
         "async" => asynctest::run_test(),
+        "fn" => fntest::fn_test(),
         _ => (),
     }
 }
