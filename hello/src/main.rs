@@ -1,5 +1,6 @@
 #![feature(generators, generator_trait)]
 #![feature(async_await)]
+#![feature(async_closure)]
 
 //feature需要加到main.rs或者lib.rs
 mod asynctest;

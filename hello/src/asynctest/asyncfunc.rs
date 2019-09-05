@@ -10,14 +10,14 @@ struct Song {
 impl Song{
     fn sing(&self) -> Result<(), Box<dyn Error>> {
         println!("sing: {} begin", self.name);
-        sleep(time::Duration::from_secs(3));
+        sleep(time::Duration::from_secs(1));
         println!("sing: {} end", self.name);
         Ok(())
     }
 
     fn learn(&self) -> Result<(), Box<dyn Error>> {
         println!("learn: {} begin", self.name);
-        sleep(time::Duration::from_secs(2));
+        sleep(time::Duration::from_secs(1));
         println!("learn: {} end", self.name);
         Ok(())
     }
@@ -36,7 +36,7 @@ async fn sing_song(song: Song) {
 
 async fn dance() {
     println!("dance begin");
-    sleep(time::Duration::from_secs(2));
+    sleep(time::Duration::from_secs(1));
     println!("dance end");
 }
 
