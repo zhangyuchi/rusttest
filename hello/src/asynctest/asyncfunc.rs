@@ -1,4 +1,3 @@
-use futures::executor::block_on;
 use std::error::Error;
 use std::thread::sleep;
 use std::time;
@@ -50,7 +49,7 @@ async fn learn_and_sing() {
     //println!("learn_and_sing done");
 }
 
-async fn async_main() {
+pub async fn async_main() {
     let f1 = learn_and_sing();
     println!("i am first");
     let f2 = dance();
@@ -62,8 +61,4 @@ async fn async_main() {
     // `async_main` is blocked and will yield to the executor.
     futures::join!(f1, f2);
     println!("async_main done");
-}
-
-pub fn run_test() {
-    block_on(async_main()); // `future` is run and "hello, world!" is printed
 }
