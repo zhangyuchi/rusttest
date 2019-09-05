@@ -7,6 +7,8 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
+//https://rustlang-cn.org/office/rust/async-rust/async_await/chapter.html
+
 pub fn pool_main() {
     // This is a *blocking* channel
     let (tx, rx) = mpsc::channel();
