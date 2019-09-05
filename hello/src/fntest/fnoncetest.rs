@@ -15,6 +15,7 @@ where
 {
     println!("fn_once begins");
     func();
+    //func();
     println!("fn_once ended");
 }
 
