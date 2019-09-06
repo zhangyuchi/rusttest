@@ -33,10 +33,6 @@ async fn compute_03() {
     println!("=>03 it is over!");
 }
 
-fn compute_04() {
-    println!("=> 04 is entering....")
-}
-
 fn compute_05(value: i32) -> impl Future<Output = i32> {
     let closure = async move |v: i32| {
         compute_03().await;

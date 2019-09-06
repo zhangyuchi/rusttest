@@ -23,14 +23,14 @@ impl Song{
     }
 }
 
-async fn learn_song() -> Song {
+async fn learn_song() -> Result<Song, Box<dyn Error>> {
     let song = Song{name:String::from("long river"), finish:true};
-    song.learn();
-    return song;
+    song.learn()?;
+    return Ok(song);
 }
 
-async fn sing_song(song: Song) {
-    song.sing();
+async fn sing_song(song: Song){
+    song.sing().expect("fatal error: sing song");
     ()
 }
 
@@ -44,8 +44,9 @@ async fn learn_and_sing() {
     // Wait until the song has been learned before singing it.
     // We use `.await` here rather than `block_on` to prevent blocking the
     // thread, which makes it possible to `dance` at the same time.
-    let song = learn_song().await;
-    sing_song(song).await;
+    if let Ok(song) = learn_song().await{
+        sing_song(song).await;
+    }
     //println!("learn_and_sing done");
 }
 

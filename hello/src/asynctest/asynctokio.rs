@@ -1,4 +1,4 @@
-use futures::compat::Future01CompatExt;
+//use futures::compat::Future01CompatExt;
 use futures::future::{FutureExt, TryFutureExt};
 
 pub fn async_main() {
