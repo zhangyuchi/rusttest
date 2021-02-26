@@ -1,15 +1,9 @@
 [workspace]
 
-members = [
-    "hello",
-    "guess",
-    "tcp_server",
-	"async/clobber",
-]
+members = ["hello", "guess", "tcp_server", "async/clobber"]
 
 [profile.release]
 debug = true
 
 [profile.bench]
 debug = true
-
