@@ -3,6 +3,7 @@
 
 //feature需要加到main.rs或者lib.rs
 mod asynctest;
+mod collectiontest;
 mod fntest;
 mod generate;
 mod itertest;
@@ -14,6 +15,10 @@ mod thread;
 mod traittest;
 
 use clap::{App, Arg};
+
+fn default(name: &str) {
+  print!("unsupport type arg: {}", name)
+}
 
 fn main() {
   let command = App::new("rusttest")
@@ -42,6 +47,7 @@ fn main() {
     "async" => asynctest::run_test(),
     "fn" => fntest::fn_test(),
     "string" => stringtest::test(),
-    _ => (),
+    "collect" => collectiontest::test(),
+    _ => default(type_arg),
   }
 }

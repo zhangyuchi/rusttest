@@ -19,6 +19,11 @@ pub fn test() {
     println!("the first word is: {:?}", word);
   }
 
-  s.truncate(2);
+  s.truncate(3);
   println!("the first word is: {:?}", s);
+
+  let s1 = String::from("hey, ");
+  let s2 = String::from("you!");
+  let s3 = s1 + &s2; //s1 moved
+  println!("the first word is: {:?}", s3);
 }
