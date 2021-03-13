@@ -15,7 +15,7 @@ mod traittest;
 use clap::{App, Arg};
 
 fn main() {
-  let matches = App::new("rusttest")
+  let command = App::new("rusttest")
     .version("0.1.0")
     .author("zhangjun")
     .about("Learn use Rust")
@@ -28,9 +28,9 @@ fn main() {
     .args_from_usage("-t --type=[Test Type] 'test type'")
     .get_matches();
 
-  let addr_str = matches.value_of("type").expect("need type arg");
+  let typeArg = command.value_of("type").expect("need type arg");
 
-  match addr_str {
+  match typeArg {
     "thread" => thread::run_test(),
     "smart" => smart::run_test(),
     "template" => template::largest_run(),
