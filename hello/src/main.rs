@@ -7,6 +7,7 @@ mod fntest;
 mod generate;
 mod itertest;
 mod smart;
+mod stringtest;
 mod structtest;
 mod template;
 mod thread;
@@ -28,9 +29,9 @@ fn main() {
     .args_from_usage("-t --type=[Test Type] 'test type'")
     .get_matches();
 
-  let typeArg = command.value_of("type").expect("need type arg");
+  let type_arg = command.value_of("type").expect("need type arg");
 
-  match typeArg {
+  match type_arg {
     "thread" => thread::run_test(),
     "smart" => smart::run_test(),
     "template" => template::largest_run(),
@@ -40,6 +41,7 @@ fn main() {
     "gen" => generate::generate(),
     "async" => asynctest::run_test(),
     "fn" => fntest::fn_test(),
+    "string" => stringtest::test(),
     _ => (),
   }
 }
