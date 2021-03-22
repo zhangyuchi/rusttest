@@ -12,7 +12,7 @@ fn maptest() {
     println!("{}: {}", key, value);
   }
 
-  let text = "hello world wonderful world";
+  let text = "hello world wonderful world!";
   let mut map = HashMap::new();
   for word in text.split_whitespace() {
     let count = map.entry(word).or_insert(0);
@@ -21,6 +21,19 @@ fn maptest() {
   for (key, value) in &map {
     println!("{}: {}", key, value);
   }
+
+  for ref entry in &map {
+    println!("entry: {{{}:{}}}", entry.0, entry.1);
+  }
+
+  for (key, value) in map {
+    println!("{}: {}", key, value);
+  }
+
+  //error: map has been moved
+  // for (key, value) in map {
+  //   println!("{}: {}", key, value);
+  // }
 }
 
 pub fn test() {
