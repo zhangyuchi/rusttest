@@ -57,12 +57,14 @@ use std::mem::replace;
 impl Render {
   //实现 update_buffer() 方法，
   //更新buffer，把 next 更新到 current 中，再更新 next
+  // compile error
   // fn update_buffer(&mut self, buf: String) {
   //   self.current_buffer = self.next_buffer;
   //   self.next_buffer = Buffer { buffer: buf };
   // }
 
-  fn update_buffer(&mut self, buf: String) {
+  //compile ok
+  fn update_buffer2(&mut self, buf: String) {
     self.current_buffer = replace(&mut self.next_buffer, Buffer { buffer: buf });
   }
 }
