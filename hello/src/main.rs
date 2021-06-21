@@ -13,6 +13,7 @@ mod structtest;
 mod template;
 mod thread;
 mod traittest;
+mod closuretest;
 
 use clap::{App, Arg};
 
@@ -48,6 +49,7 @@ fn main() {
     "fn" => fntest::fn_test(),
     "string" => stringtest::test(),
     "collect" => collectiontest::test(),
+    "closure" => closuretest::test(),
     _ => default(type_arg),
   }
 }

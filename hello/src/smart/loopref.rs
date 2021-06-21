@@ -4,13 +4,13 @@ use std::rc::Weak;
 
 struct Owner {
     name: String,
-    gadgets: RefCell<Vec<Weak<Gadget>>>,
+    gadgets: RefCell<Vec<Weak<Gadget>>>, //hold item weak ref
     // 其他字段
 }
 
 struct Gadget {
     id: i32,
-    owner: Rc<Owner>,
+    owner: Rc<Owner>, //hold owner strong ref
     // 其他字段
 }
 
@@ -18,9 +18,9 @@ pub fn loopref() {
     // 创建一个可计数的Owner。
     // 注意我们将gadgets赋给了Owner。
     // 也就是在这个结构体里， gadget_owner包含gadets
-    let gadget_owner: Rc<Owner> = Rc::new(Owner {
+    let gadget_owner: Rc<Owner> = Rc::new(Owner { //Rc or Arc only have one mut hold
         name: "Gadget Man".to_string(),
-        gadgets: RefCell::new(Vec::new()),
+        gadgets: RefCell::new(Vec::new()), //RefCell may have multi mut hold, need mutex to synchronization
     });
 
     // 首先，我们创建两个gadget，他们分别持有 gadget_owner 的一个引用。
