@@ -42,7 +42,7 @@ fn main() {
     "thread" => thread::run_test(),
     "smart" => smart::run_test(),
     "template" => template::largest_run(),
-    "trait" => traittest::print_person(),
+    "trait" => traittest::test(),
     "struct" => structtest::print_info(),
     "iter" => itertest::run_test(),
     "gen" => generate::generate(),
