@@ -14,6 +14,7 @@ mod template;
 mod thread;
 mod traittest;
 mod closuretest;
+mod ootest;
 
 use clap::{App, Arg};
 
@@ -50,6 +51,7 @@ fn main() {
     "string" => stringtest::test(),
     "collect" => collectiontest::test(),
     "closure" => closuretest::test(),
+    "oo" => ootest::test(),
     _ => default(type_arg),
   }
 }
