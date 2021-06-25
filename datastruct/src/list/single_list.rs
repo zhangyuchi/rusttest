@@ -1,11 +1,10 @@
 use std::cell::RefCell;
 use std::fmt;
 use std::fmt::Debug;
+use std::ops::Deref;
 use std::rc::Rc;
 
 //use std::cell::Cell;
-
-use std::ops::Deref;
 
 type LinkNode<T> = Option<Rc<RefCell<Node<T>>>>;
 
@@ -53,7 +52,7 @@ pub struct List<T> {
 
 impl<T: std::fmt::Debug> fmt::Display for List<T> {
   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-    let mut item = self.head();
+    let mut item = self.front();
     unsafe {
       while let Some(node) = item {
         println!("list: {:?}", node.borrow());
@@ -67,7 +66,7 @@ impl<T: std::fmt::Debug> fmt::Display for List<T> {
 }
 
 impl<T> List<T> {
-  pub fn head(&self) -> LinkNode<T> {
+  pub fn front(&self) -> LinkNode<T> {
     match &self.head {
       None =>
         return None,
@@ -77,7 +76,7 @@ impl<T> List<T> {
     }
   }
 
-  pub fn tail(&self) -> LinkNode<T> {
+  pub fn back(&self) -> LinkNode<T> {
     match &self.tail {
       None =>
         return None,
@@ -98,6 +97,8 @@ impl<T> List<T> {
       self.head = Some(n.clone());
       self.tail = Some(n.clone());
     }
+
+    self.size += 1
   }
 }
 
