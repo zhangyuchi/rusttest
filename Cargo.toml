@@ -1,6 +1,6 @@
 [workspace]
 
-members = ["hello", "guess", "tcp_server", "async/clobber"]
+members = ["hello", "guess", "tcp_server", "async/clobber", "datastruct"]
 
 [profile.release]
 debug = true
