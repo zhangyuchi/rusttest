@@ -10,6 +10,7 @@ type LinkNode<T> = Option<Rc<RefCell<Node<T>>>>;
 
 #[derive(Debug)]
 pub struct Node<T> {
+    prev: LinkNode<T>, //identify real or nil next
     next: LinkNode<T>, //identify real or nil next
     val: T,
 }
@@ -25,7 +26,7 @@ impl<T> fmt::Display for Node<T>
 
 impl<T> Node<T> {
     pub fn get_next(&self) -> LinkNode<T> {
-        match &self.next {
+        match self.next {
             None =>
                 return None,
             // Not creating new mutable (unique!) references overlapping `element`.

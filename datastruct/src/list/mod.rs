@@ -26,6 +26,6 @@ fn test_double() {
     newlist.push(20);
     newlist.push(1);
     println!("test double");
-    println!("list: {:?}", newlist);
+    println!("front: {:?}", newlist.front());
     println!("back: {:?}", newlist.back());
 }
